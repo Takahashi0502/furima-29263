@@ -1,53 +1,61 @@
 # テーブル設計
 ## users テーブル
-| Column     | Type   | Options     |
-| nickname   | string | null: false |
-| email      | string | null: false |
-| password   | string | null: false |
-| name_kanji | string | null: false |
-| name_kana  | string | null: false |
-| birthday   | string | null: false |
+| Column            | Type   | Options     |
+| nickname          | string | null: false |
+| email             | string | null: false |
+| password          | string | null: false |
+| family_name_kanji | string | null: false |
+| first_name_kanji  | string | null: false |
+| family_name_kana  | string | null: false |
+| first_name_kana   | string | null: false |
+| birthday          | date   | null: false |
 
 ### Association
 * has_many: items
+* has_many: purchases
 
 ## items テーブル
-| Column        | Type       | Options                        |
-| name          | string     | null: false                    |
-| info          | text       | null: false                    |
-| category      | string     | null: false                    |
-| status        | string     | null: false                    |
-| delivery_fee  | string     | null: false                    |
-| shipping_area | string     | null: false                    |
-| shipping_days | string     | null: false                    |
-| price         | integer    | null: false                    |
-| users_id      | references | null: false, foreign_key: true |
+| Column           | Type       | Options                        |
+| name             | string     | null: false                    |
+| info             | text       | null: false                    |
+| category_id      | string     | null: false                    |
+| status_id        | string     | null: false                    |
+| delivery_fee_id  | string     | null: false                    |
+| shipping_area_id | string     | null: false                    |
+| shipping_days_id | string     | null: false                    |
+| price            | integer    | null: false                    |
+| user             | references | null: false, foreign_key: true |
 
 ### Association
-* belings_to: user
+* belongs_to: user
 * has_one: purchase
 * has_one_attached: image
+* belongs_to_active_hash :category
+* belongs_to_active_hash :status
+* belongs_to_active_hash :delivery_fee
+* belongs_to_active_hash :shipping_area
+* belongs_to_active_hash :shipping_days
 
 ## purchases テーブル
-| Column        | Type       | Options                        |
-| card_num      | integer    | null: false                    |
-| expiration    | string     | null: false                    |
-| security_code | integer    | null: false                    |
-| item_id       | references | null: false, foreign_key: true |
+| Column | Type       | Options                        |
+| item   | references | null: false, foreign_key: true |
+| user   | references | null: false, foreign_key: true |
 
 ### Association
 * belongs_to: item
+* belongs_to: user
 * has_one: address
 
 ## addresses
-| Column      | Type       | Options                        |
-| postal_code | integer    | null: false                    |
-| prefecture  | string     | null: false                    |
-| city_name   | string     | null: false                    |
-| street_num  | string     | null: false                    |
-| building    | string     |                                |
-| phone_num   | integer    | null: false                    |
-| purchase_id | references | null: false, foreign_key: true |
+| Column         | Type       | Options                        |
+| postal_code    | string     | null: false                    |
+| prefecture_id  | string     | null: false                    |
+| city_name      | string     | null: false                    |
+| street_num     | string     | null: false                    |
+| building       | string     |                                |
+| phone_num      | string     | null: false                    |
+| purchase       | references | null: false, foreign_key: true |
 
 ### Association
 * belongs_to: purchase
+* belongs_to_active_hash :prefecture
