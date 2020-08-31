@@ -17,6 +17,7 @@
 
 ## items テーブル
 | Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
 | name             | string     | null: false                    |
 | info             | text       | null: false                    |
 | category_id      | integer    | null: false                    |
@@ -39,6 +40,7 @@
 
 ## purchases テーブル
 | Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
 | item   | references | null: false, foreign_key: true |
 | user   | references | null: false, foreign_key: true |
 
@@ -49,6 +51,7 @@
 
 ## addresses
 | Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
 | postal_code    | string     | null: false                    |
 | prefecture_id  | integer    | null: false                    |
 | city_name      | string     | null: false                    |
