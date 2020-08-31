@@ -18,11 +18,11 @@
 | Column           | Type       | Options                        |
 | name             | string     | null: false                    |
 | info             | text       | null: false                    |
-| category_id      | string     | null: false                    |
-| status_id        | string     | null: false                    |
-| delivery_fee_id  | string     | null: false                    |
-| shipping_area_id | string     | null: false                    |
-| shipping_days_id | string     | null: false                    |
+| category_id      | integer    | null: false                    |
+| status_id        | integer    | null: false                    |
+| delivery_fee_id  | integer    | null: false                    |
+| shipping_area_id | integer    | null: false                    |
+| shipping_days_id | integer    | null: false                    |
 | price            | integer    | null: false                    |
 | user             | references | null: false, foreign_key: true |
 
@@ -49,7 +49,7 @@
 ## addresses
 | Column         | Type       | Options                        |
 | postal_code    | string     | null: false                    |
-| prefecture_id  | string     | null: false                    |
+| prefecture_id  | integer    | null: false                    |
 | city_name      | string     | null: false                    |
 | street_num     | string     | null: false                    |
 | building       | string     |                                |
