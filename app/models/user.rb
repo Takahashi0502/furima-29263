@@ -8,12 +8,12 @@ class User < ApplicationRecord
     validates :nickname
     validates :birthday
     
-    with_options format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: '全角文字を使用してください' }
+    with_options format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: '全角文字を使用してください' } do
       validates :family_name_kanji
       validates :first_name_kanji
     end
 
-    with_options format: { with: /\A[ァ-ン]+\z/, message: '全角文字(カタカナ)を使用してください' }
+    with_options format: { with: /\A[ァ-ン]+\z/, message: '全角文字(カタカナ)を使用してください' } do
       validates :family_name_kana
       validates :first_name_kana
     end
