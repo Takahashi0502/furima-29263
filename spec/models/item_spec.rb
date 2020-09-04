@@ -68,13 +68,13 @@ RSpec.describe Item, type: :model do
     it 'priceが既定の金額外だと登録できない' do
       @item.price = 200
       @item.valid?
-      expect(@item.errors.full_messages).to include("Price 指定内の金額を入力してください")
+      expect(@item.errors.full_messages).to include('Price 指定内の金額を入力してください')
     end
 
     it 'priceが半角数字以外だと登録できない' do
       @item.price = "aaa"
       @item.valid?
-      expect(@item.errors.full_messages).to include("Price 指定内の金額を入力してください")
+      expect(@item.errors.full_messages).to include('Price 指定内の金額を入力してください')
     end
   end
 end
