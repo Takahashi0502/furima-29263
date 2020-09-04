@@ -17,9 +17,9 @@ class Item < ApplicationRecord
     with_options numericality: {greater_than: 1, message: "リストから選択してください"} do
       validates :category_id
       validates :status_id
-      validates :delivery_fee
-      validates :shipping_area
-      validates :shipping_days
+      validates :delivery_fee_id
+      validates :shipping_area_id
+      validates :shipping_days_id
     end
 
     validates :price,        numericality: { only_integer: true, greater_than: 299, less_than: 10000000, message: "指定内の金額を入力してください" }
