@@ -24,11 +24,11 @@
       </span>
     </div>
 
-    <% if @item.user_id == current_user.id %>
+    <% if user_signed_in? && @item.user_id == current_user.id %>
       <%= link_to '商品の編集', "#", method: :get, class: "item-red-btn" %>
       <p class='or-text'>or</p>
       <%= link_to '削除', "#", method: :delete, class:'item-destroy' %>
-    <% else %>
+    <% elsif user_signed_in? %>
       <%= link_to '購入画面に進む', "#" ,class:"item-red-btn"%>
     <% end %>
 
@@ -56,7 +56,7 @@
         </tr>
         <tr>
           <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= @item.shippng_area.name %></td>
+          <td class="detail-value"><%= @item.shipping_area.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送日の目安</th>
