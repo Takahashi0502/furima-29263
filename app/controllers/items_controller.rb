@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: :index
   def index
+    @items = Item.all.order(created_at: "DESC")
+    @orders = Order.includes(:item)
   end
 
   def new
