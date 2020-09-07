@@ -38,7 +38,7 @@
 * belongs_to_active_hash :shipping_area
 * belongs_to_active_hash :shipping_days
 
-## order テーブル
+## orders テーブル
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
 | item   | references | null: false, foreign_key: true |
@@ -49,7 +49,7 @@
 * belongs_to: user
 * has_one: address
 
-## addresses
+## addresses テーブル
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
 | postal_code    | string     | null: false                    |
