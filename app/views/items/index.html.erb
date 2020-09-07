@@ -118,12 +118,12 @@
     <ul class='item-lists'>
       <% @items.each do |item| %>
         <li class='list'>
-          <%= link_to "#" do %>
+          <%= link_to item_path(item.id) do %>
           <div class='item-img-content'>
             <%= image_tag item.image, class: "item-img" if item.image.attached? %>
 
             <%@orders.each do |order| %>
-              <% if item.id == order.user_id %>
+              <% if item.id == order.item_id %>
                 <div class='sold-out'>
                   <span>Sold Out!!</span>
                 </div>
