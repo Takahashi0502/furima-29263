@@ -13,7 +13,7 @@
 
 ### Association
 * has_many: items
-* has_many: purchases
+* has_many: orders
 
 ## items テーブル
 | Column           | Type       | Options                        |
@@ -30,7 +30,7 @@
 
 ### Association
 * belongs_to: user
-* has_one: purchase
+* has_one: order
 * has_one_attached: image
 * belongs_to_active_hash :category
 * belongs_to_active_hash :status
@@ -38,7 +38,7 @@
 * belongs_to_active_hash :shipping_area
 * belongs_to_active_hash :shipping_days
 
-## purchases テーブル
+## order テーブル
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
 | item   | references | null: false, foreign_key: true |
@@ -61,5 +61,5 @@
 | purchase       | references | null: false, foreign_key: true |
 
 ### Association
-* belongs_to: purchase
+* belongs_to: order
 * belongs_to_active_hash :prefecture
