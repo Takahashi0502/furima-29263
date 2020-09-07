@@ -122,13 +122,13 @@
           <div class='item-img-content'>
             <%= image_tag item.image, class: "item-img" if item.image.attached? %>
 
-            <%# 商品が売れていればsold outを表示しましょう %>
-            <% if  %>
-              <div class='sold-out'>
-                <span>Sold Out!!</span>
-              </div>
+            <%@orders.each do |order| %>
+              <% if item.id == order.user_id %>
+                <div class='sold-out'>
+                  <span>Sold Out!!</span>
+                </div>
+              <% end %>
             <% end %>
-            <%# //商品が売れていればsold outを表示しましょう %>
 
           </div>
           <div class='item-info'>

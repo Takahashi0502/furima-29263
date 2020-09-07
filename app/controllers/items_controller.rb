@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :move_to_index, except: :index
   def index
     @items = Item.all
+    @orders = Order.includes(:item)
   end
 
   def new
