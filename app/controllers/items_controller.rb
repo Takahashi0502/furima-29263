@@ -23,6 +23,18 @@ class ItemsController < ApplicationController
     @orders = Order.includes(:item)
   end
 
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    if @item.update(item_params)
+      redirect_to edit_item_path(@item.id)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def item_params
