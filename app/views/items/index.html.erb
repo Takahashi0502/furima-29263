@@ -123,7 +123,7 @@
             <%= image_tag item.image, class: "item-img" if item.image.attached? %>
 
             <%@orders.each do |order| %>
-              <% if item.id == order.user_id %>
+              <% if item.id == order.item_id %>
                 <div class='sold-out'>
                   <span>Sold Out!!</span>
                 </div>
