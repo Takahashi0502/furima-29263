@@ -12,8 +12,8 @@
 | birthday          | date   | null: false |
 
 ### Association
-* has_many: items
-* has_many: orders
+* has_many :items
+* has_many :orders
 
 ## items テーブル
 | Column           | Type       | Options                        |
@@ -29,9 +29,9 @@
 | user             | references | null: false, foreign_key: true |
 
 ### Association
-* belongs_to: user
-* has_one: order
-* has_one_attached: image
+* belongs_to :user
+* has_one :order
+* has_one_attached :image
 * belongs_to_active_hash :category
 * belongs_to_active_hash :status
 * belongs_to_active_hash :delivery_fee
@@ -45,21 +45,21 @@
 | user   | references | null: false, foreign_key: true |
 
 ### Association
-* belongs_to: item
-* belongs_to: user
-* has_one: address
+* belongs_to :item
+* belongs_to :user
+* has_one :address
 
 ## addresses テーブル
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
 | postal_code    | string     | null: false                    |
 | prefecture_id  | integer    | null: false                    |
-| city_name      | string     | null: false                    |
-| street_num     | string     | null: false                    |
+| city           | string     | null: false                    |
+| street         | string     | null: false                    |
 | building       | string     |                                |
 | phone_num      | string     | null: false                    |
-| purchase       | references | null: false, foreign_key: true |
+| order          | references | null: false, foreign_key: true |
 
 ### Association
-* belongs_to: order
+* belongs_to :order
 * belongs_to_active_hash :prefecture
