@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_item
+  before_action :correct_user, only: :index
+  before_action :ordered_item, only: :index
 
   def index
     @order = Order.new
@@ -8,7 +10,6 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.user_id = current_user.id
-    binding.pry
     if @order.valid?
       pay_item
       @order.save
@@ -35,5 +36,19 @@ class OrdersController < ApplicationController
       card: order_params[:token],
       currency:'jpy'
    )
- end
+  end
+
+  def correct_user
+    unless user_signed_in?
+      return redirect_to root_path
+    end
+    if user_signed_in? && @item.user_id == current_user.id
+      return redirect_to root_path
+    end
+  end
+
+  def ordered_item
+    @order = Order.find_by(item_id: @item.id )
+    redirect_to root_path if @order
+  end
 end
