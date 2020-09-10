@@ -2,10 +2,13 @@ class OrdersController < ApplicationController
   before_action :set_item
 
   def index
+    @order = Order.new
   end
 
   def create
-    @order = Order.new(user_id: current_user.id, item_id: @item.id)
+    @order = Order.new(order_params)
+    @order.user_id = current_user.id
+    binding.pry
     if @order.valid?
       pay_item
       @order.save
@@ -22,7 +25,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.permit(:token)
+    params.permit(:token, :item_id)
   end
 
   def pay_item
