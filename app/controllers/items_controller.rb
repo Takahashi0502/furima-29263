@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @orders = Order.includes(:item)
+    @order = Order.find_by(item_id: @item.id )
   end
 
   def update
