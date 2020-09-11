@@ -10,10 +10,8 @@ class OrdersController < ApplicationController
   def create
     @order = OrderAddress.new(order_params)
     if @order.valid?
-      binding.pry
       pay_item
       @order.save
-      binding.pry
       return redirect_to root_path
     else
       render 'index'

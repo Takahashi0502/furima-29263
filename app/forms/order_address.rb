@@ -2,7 +2,14 @@ class OrderAddress
   include ActiveModel::Model
   attr_accessor :token, :item_id, :user_id, :postal_code, :prefecture_id, :city, :street, :building, :phone_num
 
-  validates :token, presence: true
+  with_options presence: true do
+    validates :token
+    validates :postal_code, format: { with:/\A\d{3}[-]\d{4}\z/, message: 'is invalid. Include hyphen(-)' }
+    validates :prefecture_id, numericality: { greater_than: 1, message: 'is invalid. Choose from lists' }
+    validates :city
+    validates :street
+    validates :phone_num, format: { with: /\A\d+\z/, message: 'is invalid. Input half-width characters'}
+  end
 
   def save
     order = Order.create(token: token, item_id: item_id, user_id: user_id)
