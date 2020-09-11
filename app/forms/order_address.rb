@@ -8,7 +8,8 @@ class OrderAddress
     validates :prefecture_id, numericality: { greater_than: 1, message: 'is invalid. Choose from lists' }
     validates :city
     validates :street
-    validates :phone_num, format: { with: /\A\d+\z/, message: 'is invalid. Input half-width characters'}
+    validates :phone_num, format: { with: /\A\d+\z/, message: 'is invalid. Input half-width characters'},
+                          length: { maximum: 11, message: 'is invalid. Input within 11 characters' }
   end
 
   def save
